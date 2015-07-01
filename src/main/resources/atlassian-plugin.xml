@@ -5,28 +5,17 @@
         <vendor name="${project.organization.name}" url="${project.organization.url}" />
         <param name="plugin-icon">images/pluginIcon.png</param>
         <param name="plugin-logo">images/pluginLogo.png</param>
+        <param name="atlassian-data-center-compatible">true</param>
     </plugin-info>
 
-    <!-- add our i18n resource -->
-    <resource type="i18n" name="i18n" location="marked"/>
-    
-    <!-- add our web resources -->
-    <web-resource key="marked-resources" name="marked Web Resources">
-        <dependency>com.atlassian.auiplugin:ajs</dependency>
-        
-        <resource type="download" name="marked.css" location="/css/marked.css"/>
-        <resource type="download" name="marked.js" location="/js/marked.js"/>
-        <resource type="download" name="images/" location="/images"/>
-
-        <context>marked</context>
-    </web-resource>
-    
-    <!-- publish our component -->
-    <component key="myPluginComponent" class="com.borisdiakur.marked.MyPluginComponentImpl" public="true">
-        <interface>com.borisdiakur.marked.MyPluginComponent</interface>
-    </component>
-    
-    <!-- import from the product container -->
-    <component-import key="applicationProperties" interface="com.atlassian.sal.api.ApplicationProperties" />
-    
+    <xhtml-macro name="marked"
+                 class="com.borisdiakur.marked.MarkedMacro"
+                 key="marked"
+                 documentation-url="https://github.com/borisdiakur/marked">
+        <category name="formatting"/>
+        <parameters>
+            <parameter name="url" type="string" default ="">
+            </parameter>
+        </parameters>
+    </xhtml-macro>
 </atlassian-plugin>
