@@ -59,7 +59,7 @@ Instead of the expected output you might see the following error message:
   PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: 
   unable to find valid certification path to requested target
 
-The cause of the exception is that the resource host is running ofer SSL
+The cause of the exception is that the resource host is running over SSL
 and your Confluence instance doesn't trust the certificate of that host.   
 The solution is to add the resource host's SSL Certificate to the Confluence Java Keystore.
 For more information please refer to the [Confluence documentation](https://confluence.atlassian.com/display/DOC/Connecting+to+LDAP+or+JIRA+or+Other+Services+via+SSL).
