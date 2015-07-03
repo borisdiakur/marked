@@ -17,7 +17,7 @@
 
 ### Manually
 
-1. Download the marked jar file either from the [Attlasian Marketplace](https://marketplace.atlassian.com/plugins/com.borisdiakur.marked)
+1. Download the _marked_ jar file either from the [Attlasian Marketplace](https://marketplace.atlassian.com/plugins/com.borisdiakur.marked)
 or from [GitHub](https://github.com/borisdiakur/marked). 
 2. Log into your Confluence instance as an admin.
 3. Click the admin dropdown and choose __Add-ons__. The _Manage add-ons_ screen loads.
@@ -25,9 +25,16 @@ or from [GitHub](https://github.com/borisdiakur/marked).
 5. Choose the file from you file system or enter the URL to the location of the raw jar file and click __upload__.
 6. You're all set!
 
+## Usage
+
+1. Select _marked_ in the _Select macro_ dialog.
+2. Insert the URL of your raw markdown resource in the input field labeled with _URL_.
+3. Preview the rendered result by clicking on _Preview_.
+4. Insert the rendered content by clicking on _Insert_. You can now preview and save the document.
+
 ## FAQ
 
-### 1. Can marked access resources which reside in a private repository? 
+### 1. Can _marked_ access resources which reside in a private repository? 
 
 When working with repositories which require authentication you'll might need to use the associated API
 in order to access those files.
@@ -66,5 +73,9 @@ For more information please refer to the [Confluence documentation](https://conf
 
 ## Support
 
-If you have any trouble with marked help yourself by [__filing an issue__](https://github.com/borisdiakur/marked/issues)
+If you have any trouble with _marked_ help yourself by [__filing an issue__](https://github.com/borisdiakur/marked/issues)
 or even better support back with a [__pull request__](https://github.com/borisdiakur/marked/pulls).
+
+## Credits
+
+_marked_ uses the Markdown processing library [__pegdown__](https://github.com/sirthias/pegdown) under the hood. 
