@@ -43,20 +43,9 @@ You might want to add a guest user to your GitLab project and use his/her privat
 
 In order to get the correct URL you would do the following:
 
-1. Get the project id for a given project name:
-```
-https://gitlab.yourdomain.com/api/v3/projects/your-group%2Fyour-project?private_token=your-private-token
-```
-
-2. Get a list of files for a given project id:
-```
-https://gitlab.yourdomain.com/api/v3/projects/your-project-id/repository/tree?private_token=your-private-token
-```
-
-3. Get the raw file content for a given file id:
-```
-https://gitlab.yourdomain.com/api/v3/projects/your-project-id/repository/raw_blobs/your-file-id?private_token=your-private-token
-```
+1. Get the project id for a given project name: `https://gitlab.yourdomain.com/api/v3/projects/your-group%2Fyour-project?private_token=your-private-token`
+2. Get a list of files for a given project id: `https://gitlab.yourdomain.com/api/v3/projects/your-project-id/repository/tree?private_token=your-private-token`
+3. Get the raw file content for a given file id: `https://gitlab.yourdomain.com/api/v3/projects/your-project-id/repository/raw_blobs/your-file-id?private_token=your-private-token`
 
 __Note__: When working with another repository management system such as [Bitbucket](https://bitbucket.org/) or whatnot
 you will have to comply with the API given.
