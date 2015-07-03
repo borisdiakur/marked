@@ -31,7 +31,7 @@ public class MarkedMacro extends BaseMacro implements Macro {
             int numRead = urlStream.read(buffer);
             String content = new String(buffer, 0, numRead);
 
-            int MAX_PAGE_SIZE = 9999999;
+            int MAX_PAGE_SIZE = Integer.MAX_VALUE;
             while ((numRead != -1) && (content.length() < MAX_PAGE_SIZE)) {
                 numRead = urlStream.read(buffer);
                 if (numRead != -1) {
@@ -41,9 +41,9 @@ public class MarkedMacro extends BaseMacro implements Macro {
             }
             return content;
         } catch (IOException ioe) {
-            return "Cannot read";
+            return "Cannot read resource.\n".concat(ioe.getLocalizedMessage());
         } catch (IndexOutOfBoundsException iaobe) {
-            return "Too large";
+            return "Resource is too large.";
         }
     }
 
@@ -63,22 +63,25 @@ public class MarkedMacro extends BaseMacro implements Macro {
     public String execute(Map<String, String> parameters, String bodyContent, ConversionContext conversionContext) throws MacroExecutionException {
         PegDownProcessor translator = new PegDownProcessor(Parser.ALL);
         URL url;
+        if (parameters.get("URL") == null) {
+            return "";
+        }
         try {
-            url = new URL(parameters.get("url"));
+            url = new URL(parameters.get("URL"));
         } catch (MalformedURLException e) {
-            return "Cannot find";
+            return "Cannot find valid resource.";
         }
         return translator.markdownToHtml(getpage(url));
     }
 
     @Override
     public boolean hasBody() {
-        return true;  //To change body of implemented methods use File | Settings | File Templates.
+        return true;
     }
 
     @Override
     public RenderMode getBodyRenderMode() {
-        return RenderMode.NO_RENDER;  //To change body of implemented methods use File | Settings | File Templates.
+        return RenderMode.NO_RENDER;
     }
 
     @Override
