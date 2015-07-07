@@ -6,7 +6,7 @@
 
 ## Installation
 
-### Via [Attlasian Marketplace](https://marketplace.atlassian.com/)
+### Via [Attlasian Marketplace](https://marketplace.atlassian.com/plugins/com.borisdiakur.marked)
 
 1. Log into your Confluence instance as an admin.
 2. Click the admin dropdown and choose __Add-ons__. The _Manage add-ons_ screen loads.
@@ -22,8 +22,7 @@ or from [GitHub](https://github.com/borisdiakur/marked).
 2. Log into your Confluence instance as an admin.
 3. Click the admin dropdown and choose __Add-ons__. The _Manage add-ons_ screen loads.
 4. Click __Upload add-on__ at the top right of the page. The _Upload add-on_ dialog loads.
-5. Choose the file from you file system or enter the URL to the location of the raw jar file and click __upload__.
-6. You're all set!
+5. Choose the file from you file system or enter the URL to the location of the raw jar file and click __upload__. And that's it!
 
 ## Usage
 
@@ -70,6 +69,10 @@ The cause of the exception is that the resource host is running over SSL
 and your Confluence instance doesn't trust the certificate of that host.   
 The solution is to add the resource host's SSL Certificate to the Confluence Java Keystore.
 For more information please refer to the [Confluence documentation](https://confluence.atlassian.com/display/DOC/Connecting+to+LDAP+or+JIRA+or+Other+Services+via+SSL).
+
+### 3. Is it free of charge?
+
+Yes.
 
 ## Support
 
