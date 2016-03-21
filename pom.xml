@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.borisdiakur</groupId>
     <artifactId>marked</artifactId>
-    <version>1.0.0</version>
-
+    <version>1.0.1</version>
     <organization>
         <name>Boris Diakur</name>
         <url>http://borisdiakur.com/</url>
     </organization>
-
     <name>marked</name>
     <description>This macro renders remote Markdown.</description>
     <packaging>atlassian-plugin</packaging>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -31,7 +25,6 @@
             <version>${confluence.version}</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- WIRED TEST RUNNER DEPENDENCIES -->
         <dependency>
             <groupId>com.atlassian.plugins</groupId>
@@ -54,10 +47,10 @@
             <groupId>org.pegdown</groupId>
             <artifactId>pegdown</artifactId>
             <version>1.5.0</version>
-            <scope>compile</scope>    <!-- important! -->
+            <scope>compile</scope>
+            <!-- important! -->
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -79,18 +72,15 @@
             </plugin>
         </plugins>
     </build>
-
     <properties>
-        <confluence.version>5.8.2</confluence.version>
-        <confluence.data.version>5.7.4</confluence.data.version>
-        <amps.version>5.0.13</amps.version>
+        <confluence.version>5.9.7</confluence.version>
+        <confluence.data.version>5.9.7</confluence.data.version>
+        <amps.version>6.2.3</amps.version>
         <plugin.testrunner.version>1.2.3</plugin.testrunner.version>
     </properties>
-
     <scm>
         <connection>scm:git:git@github.com:borisdiakur/marked.git</connection>
         <developerConnection>scm:git:git@github.com:borisdiakur/marked.git</developerConnection>
         <url>https://github.com/borisdiakur/marked</url>
     </scm>
-
 </project>
