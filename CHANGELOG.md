@@ -1,3 +1,7 @@
+## 1.0.3
+
+Fixed corrupt jar file
+
 ## 1.0.2
 
 Support release for Confluence 5.10.4
