@@ -1,3 +1,7 @@
+## 1.1.0
+
+Added support for basic auth
+
 ## 1.0.3
 
 Fixed corrupt jar file

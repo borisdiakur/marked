@@ -33,7 +33,7 @@ or from [GitHub](https://github.com/borisdiakur/marked).
 
 ## FAQ
 
-### 1. Can _marked_ access resources which reside in a private repository? 
+### 1. Can _marked_ access resources which reside in a private repository?
 
 When working with repositories which require authentication you'll might need to use the associated API
 in order to access those files.
@@ -55,6 +55,8 @@ In order to get the correct URL you would do the following:
 
 __Note__: When working with another repository management system such as [Bitbucket](https://bitbucket.org/) or whatnot
 you will have to comply with the API given.
+
+_marked_ also supports basic auth.
 
 ### 2. I get a PKIX path building failed error. What's that? 
 
