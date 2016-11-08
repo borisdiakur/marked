@@ -21,12 +21,18 @@ import java.util.Map;
 public class MarkedMacro extends BaseMacro implements Macro {
 
     private String getpage(URL url) {
+
         try {
             // try opening the URL
             URLConnection urlConnection = url.openConnection();
-            urlConnection.setAllowUserInteraction(false);
 
-            InputStream urlStream = url.openStream();
+            // basic auth
+            if (url.getUserInfo() != null) {
+                String basicAuth = "Basic " + javax.xml.bind.DatatypeConverter.printBase64Binary(url.getUserInfo().getBytes());
+                urlConnection.setRequestProperty("Authorization", basicAuth);
+            }
+
+            InputStream urlStream = urlConnection.getInputStream();
             byte buffer[] = new byte[1000];
             int numRead = urlStream.read(buffer);
             String content = new String(buffer, 0, numRead);

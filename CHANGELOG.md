@@ -1,6 +1,10 @@
-## 1.0.4
+## 1.1.1
 
 Support release for Confluence 6.0.1
+
+## 1.1.0
+
+Added support for basic auth
 
 ## 1.0.3
 
