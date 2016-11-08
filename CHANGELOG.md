@@ -1,3 +1,7 @@
+## 1.0.4
+
+Support release for Confluence 6.0.1
+
 ## 1.0.3
 
 Fixed corrupt jar file
