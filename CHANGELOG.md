@@ -1,3 +1,8 @@
+## 1.1.2
+
+Support release for Confluence 6.1.1
+Replaced pegdown parser with [flexmark-java](https://github.com/vsch/flexmark-java) parser
+
 ## 1.1.1
 
 Support release for Confluence 6.0.1

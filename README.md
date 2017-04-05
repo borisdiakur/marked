@@ -83,4 +83,4 @@ or even better support back with a [__pull request__](https://github.com/borisdi
 
 ## Credits
 
-_marked_ uses the Markdown processing library [__pegdown__](https://github.com/sirthias/pegdown) under the hood. 
+_marked_ uses the Markdown processing library [__flexmark-java__](https://github.com/vsch/flexmark-java) under the hood.

@@ -8,14 +8,18 @@ import com.atlassian.renderer.RenderContext;
 import com.atlassian.renderer.v2.RenderMode;
 import com.atlassian.renderer.v2.macro.BaseMacro;
 import com.atlassian.renderer.v2.macro.MacroException;
-import org.pegdown.Parser;
-import org.pegdown.PegDownProcessor;
+import com.vladsch.flexmark.ext.gfm.strikethrough.StrikethroughExtension;
+import com.vladsch.flexmark.ext.tables.TablesExtension;
+import com.vladsch.flexmark.html.HtmlRenderer;
+import com.vladsch.flexmark.parser.Parser;
+import com.vladsch.flexmark.util.options.MutableDataSet;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Arrays;
 import java.util.Map;
 
 public class MarkedMacro extends BaseMacro implements Macro {
@@ -67,7 +71,6 @@ public class MarkedMacro extends BaseMacro implements Macro {
 
     @Override
     public String execute(Map<String, String> parameters, String bodyContent, ConversionContext conversionContext) throws MacroExecutionException {
-        PegDownProcessor translator = new PegDownProcessor(Parser.ALL);
         URL url;
         if (parameters.get("URL") == null) {
             return "";
@@ -77,7 +80,13 @@ public class MarkedMacro extends BaseMacro implements Macro {
         } catch (MalformedURLException e) {
             return "Cannot find valid resource.";
         }
-        return translator.markdownToHtml(getpage(url));
+
+        MutableDataSet options = new MutableDataSet();
+        options.set(Parser.EXTENSIONS, Arrays.asList(TablesExtension.create(), StrikethroughExtension.create()));
+        Parser parser = Parser.builder(options).build();
+        HtmlRenderer renderer = HtmlRenderer.builder(options).build();
+
+        return renderer.render(parser.parse(getpage(url)));
     }
 
     @Override
