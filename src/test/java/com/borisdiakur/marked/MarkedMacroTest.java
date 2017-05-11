@@ -50,4 +50,21 @@ public class MarkedMacroTest {
         assertEquals(expectedHtml, html);
     }
 
+    @Test
+    public void convertsFencedCodeBlockToConfluenceCodeBlockWhenNoLanguageIsSpecified() {
+        // given a markdown containing code fence
+        String markdown = "```\n" +
+                "System.out.println(\"foobar\")\n" +
+                "int x = 5\n" +
+                "```";
+
+        // when converting markdown to html
+        String html = markedMacro.convertToHtml(markdown);
+
+        // then code tag is wrapped in confluence blocks
+        String expectedHtml = String.format(CONFLUENCE_CODE_BLOCK_HTML_OPEN_TEMPLATE, "java") + "System.out.println(\"foobar\")\n" +
+                "int x = 5\n" + CONFLUENCE_CODE_BLOCK_HTML_CLOSE + "\n";
+
+        assertEquals(expectedHtml, html);
+    }
 }

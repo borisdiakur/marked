@@ -80,6 +80,10 @@ public class ConfluenceCodeBlockExtension implements HtmlRenderer.HtmlRendererEx
             FencedCodeBlock fencedCodeBlock = (FencedCodeBlock) node;
 
             String language = fencedCodeBlock.getInfo().toString();
+            if (language.isEmpty()) {
+                // confluence defaults to java
+                language = "java";
+            }
             String code = fencedCodeBlock.getChildChars().toString();
 
             write(code, language, htmlWriter);
@@ -90,6 +94,7 @@ public class ConfluenceCodeBlockExtension implements HtmlRenderer.HtmlRendererEx
             IndentedCodeBlock indentedCodeBlock = (IndentedCodeBlock) node;
             String code = indentedCodeBlock.getChars().toString();
 
+            // confluence defaults to java
             write(code, "java", htmlWriter);
         }
 
