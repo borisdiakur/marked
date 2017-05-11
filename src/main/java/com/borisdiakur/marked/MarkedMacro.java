@@ -57,8 +57,6 @@ public class MarkedMacro extends BaseMacro implements Macro {
         }
     }
 
-    public MarkedMacro() {}
-
     @Override
     public BodyType getBodyType() {
         return BodyType.NONE;
@@ -87,7 +85,7 @@ public class MarkedMacro extends BaseMacro implements Macro {
 
     String convertToHtml(String markdown) {
         MutableDataSet options = new MutableDataSet();
-        options.set(Parser.EXTENSIONS, Arrays.asList(TablesExtension.create(), StrikethroughExtension.create()));
+        options.set(Parser.EXTENSIONS, Arrays.asList(TablesExtension.create(), StrikethroughExtension.create(), ConfluenceCodeBlockExtension.create()));
         Parser parser = Parser.builder(options).build();
         HtmlRenderer renderer = HtmlRenderer.builder(options).build();
         return renderer.render(parser.parse(markdown));
