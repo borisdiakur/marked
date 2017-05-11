@@ -24,8 +24,7 @@ import java.util.Map;
 
 public class MarkedMacro extends BaseMacro implements Macro {
 
-    private String getpage(URL url) {
-
+    private String fetchPage(URL url) {
         try {
             // try opening the URL
             URLConnection urlConnection = url.openConnection();
@@ -79,7 +78,7 @@ public class MarkedMacro extends BaseMacro implements Macro {
             return "Cannot find valid resource.";
         }
 
-        String markdown = getpage(url);
+        String markdown = fetchPage(url);
         return convertToHtml(markdown);
     }
 
