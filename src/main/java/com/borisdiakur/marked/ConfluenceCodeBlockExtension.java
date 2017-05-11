@@ -54,17 +54,17 @@ public class ConfluenceCodeBlockExtension implements HtmlRenderer.HtmlRendererEx
 
         @Override
         public Set<NodeRenderingHandler<?>> getNodeRenderingHandlers() {
-            HashSet<NodeRenderingHandler<?>> handlers = new HashSet();
-            NodeRenderingHandler fencedCodeBlockHandler = new NodeRenderingHandler(FencedCodeBlock.class, new CustomNodeRenderer() {
+            HashSet<NodeRenderingHandler<?>> handlers = new HashSet<NodeRenderingHandler<?>>();
+            NodeRenderingHandler<FencedCodeBlock> fencedCodeBlockHandler = new NodeRenderingHandler<FencedCodeBlock>(FencedCodeBlock.class, new CustomNodeRenderer<FencedCodeBlock>() {
                 @Override
-                public void render(Node node, NodeRendererContext context, HtmlWriter htmlWriter) {
+                public void render(FencedCodeBlock node, NodeRendererContext context, HtmlWriter htmlWriter) {
                     ConfluenceCodeBlockNodeRenderer.this.renderFencedCodeBlock(node, context, htmlWriter);
                 }
             });
 
-            NodeRenderingHandler indentedCodeBlockHandler = new NodeRenderingHandler(IndentedCodeBlock.class, new CustomNodeRenderer() {
+            NodeRenderingHandler<IndentedCodeBlock> indentedCodeBlockHandler = new NodeRenderingHandler<IndentedCodeBlock>(IndentedCodeBlock.class, new CustomNodeRenderer<IndentedCodeBlock>() {
                 @Override
-                public void render(Node node, NodeRendererContext context, HtmlWriter htmlWriter) {
+                public void render(IndentedCodeBlock node, NodeRendererContext context, HtmlWriter htmlWriter) {
                     ConfluenceCodeBlockNodeRenderer.this.renderIndentedCodeBlock(node, context, htmlWriter);
                 }
             });
@@ -75,10 +75,7 @@ public class ConfluenceCodeBlockExtension implements HtmlRenderer.HtmlRendererEx
             return handlers;
         }
 
-        private void renderFencedCodeBlock(Node node, NodeRendererContext context, HtmlWriter htmlWriter) {
-
-            FencedCodeBlock fencedCodeBlock = (FencedCodeBlock) node;
-
+        private void renderFencedCodeBlock(FencedCodeBlock fencedCodeBlock, NodeRendererContext context, HtmlWriter htmlWriter) {
             String language = fencedCodeBlock.getInfo().toString();
             if (language.isEmpty()) {
                 // confluence defaults to java
@@ -89,9 +86,7 @@ public class ConfluenceCodeBlockExtension implements HtmlRenderer.HtmlRendererEx
             write(code, language, htmlWriter);
         }
 
-        private void renderIndentedCodeBlock(Node node, NodeRendererContext context, HtmlWriter htmlWriter) {
-
-            IndentedCodeBlock indentedCodeBlock = (IndentedCodeBlock) node;
+        private void renderIndentedCodeBlock(IndentedCodeBlock indentedCodeBlock, NodeRendererContext context, HtmlWriter htmlWriter) {
             String code = indentedCodeBlock.getChars().toString();
 
             // confluence defaults to java
