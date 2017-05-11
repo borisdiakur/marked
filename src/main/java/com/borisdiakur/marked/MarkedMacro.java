@@ -81,13 +81,18 @@ public class MarkedMacro extends BaseMacro implements Macro {
             return "Cannot find valid resource.";
         }
 
+        String markdown = getpage(url);
+        return convertToHtml(markdown);
+    }
+
+    String convertToHtml(String markdown) {
         MutableDataSet options = new MutableDataSet();
         options.set(Parser.EXTENSIONS, Arrays.asList(TablesExtension.create(), StrikethroughExtension.create()));
         Parser parser = Parser.builder(options).build();
         HtmlRenderer renderer = HtmlRenderer.builder(options).build();
-
-        return renderer.render(parser.parse(getpage(url)));
+        return renderer.render(parser.parse(markdown));
     }
+
 
     @Override
     public boolean hasBody() {
