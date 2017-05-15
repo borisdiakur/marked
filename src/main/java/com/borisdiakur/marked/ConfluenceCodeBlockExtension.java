@@ -3,7 +3,6 @@ package com.borisdiakur.marked;
 import com.vladsch.flexmark.Extension;
 import com.vladsch.flexmark.ast.FencedCodeBlock;
 import com.vladsch.flexmark.ast.IndentedCodeBlock;
-import com.vladsch.flexmark.ast.Node;
 import com.vladsch.flexmark.html.CustomNodeRenderer;
 import com.vladsch.flexmark.html.HtmlRenderer;
 import com.vladsch.flexmark.html.HtmlWriter;
@@ -13,6 +12,7 @@ import com.vladsch.flexmark.html.renderer.NodeRendererFactory;
 import com.vladsch.flexmark.html.renderer.NodeRenderingHandler;
 import com.vladsch.flexmark.util.options.DataHolder;
 import com.vladsch.flexmark.util.options.MutableDataHolder;
+import com.vladsch.flexmark.util.sequence.BasedSequence;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -87,7 +87,13 @@ public class ConfluenceCodeBlockExtension implements HtmlRenderer.HtmlRendererEx
         }
 
         private void renderIndentedCodeBlock(IndentedCodeBlock indentedCodeBlock, NodeRendererContext context, HtmlWriter htmlWriter) {
-            String code = indentedCodeBlock.getChars().toString();
+
+            StringBuilder builder = new StringBuilder();
+            for (BasedSequence line : indentedCodeBlock.getContentLines()) {
+                builder.append(line.toString());
+            }
+
+            String code = builder.toString();
 
             // confluence defaults to java
             write(code, "java", htmlWriter);
@@ -97,7 +103,9 @@ public class ConfluenceCodeBlockExtension implements HtmlRenderer.HtmlRendererEx
             String htmlOpen = String.format(CONFLUENCE_CODE_BLOCK_HTML_OPEN_TEMPLATE, language);
 
             htmlWriter.raw(htmlOpen);
+            htmlWriter.openPre();
             htmlWriter.raw(code);
+            htmlWriter.closePre();
             htmlWriter.raw(CONFLUENCE_CODE_BLOCK_HTML_CLOSE);
         }
     }
