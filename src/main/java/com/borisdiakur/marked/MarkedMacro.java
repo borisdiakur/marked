@@ -24,8 +24,7 @@ import java.util.Map;
 
 public class MarkedMacro extends BaseMacro implements Macro {
 
-    private String getpage(URL url) {
-
+    private String fetchPage(URL url) {
         try {
             // try opening the URL
             URLConnection urlConnection = url.openConnection();
@@ -57,8 +56,6 @@ public class MarkedMacro extends BaseMacro implements Macro {
         }
     }
 
-    public MarkedMacro() {}
-
     @Override
     public BodyType getBodyType() {
         return BodyType.NONE;
@@ -81,13 +78,18 @@ public class MarkedMacro extends BaseMacro implements Macro {
             return "Cannot find valid resource.";
         }
 
+        String markdown = fetchPage(url);
+        return convertToHtml(markdown);
+    }
+
+    String convertToHtml(String markdown) {
         MutableDataSet options = new MutableDataSet();
-        options.set(Parser.EXTENSIONS, Arrays.asList(TablesExtension.create(), StrikethroughExtension.create()));
+        options.set(Parser.EXTENSIONS, Arrays.asList(TablesExtension.create(), StrikethroughExtension.create(), ConfluenceCodeBlockExtension.create()));
         Parser parser = Parser.builder(options).build();
         HtmlRenderer renderer = HtmlRenderer.builder(options).build();
-
-        return renderer.render(parser.parse(getpage(url)));
+        return renderer.render(parser.parse(markdown));
     }
+
 
     @Override
     public boolean hasBody() {
