@@ -1,31 +1,44 @@
-<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
-    <plugin-info>
-        <description>${project.description}</description>
-        <version>${project.version}</version>
-        <vendor name="${project.organization.name}" url="${project.organization.url}" />
-        <param name="plugin-icon">images/pluginIcon.png</param>
-        <param name="plugin-logo">images/pluginLogo.png</param>
-        <param name="atlassian-data-center-compatible">true</param>
-    </plugin-info>
+<atlassian-plugin key="${project.groupId}.${project.artifactId}"
+	name="${project.name}" plugins-version="2">
+	<plugin-info>
+		<description>${project.description}</description>
+		<version>${project.version}</version>
+		<vendor name="${project.organization.name}" url="${project.organization.url}" />
+		<param name="plugin-icon">images/pluginIcon.png</param>
+		<param name="plugin-logo">images/pluginLogo.png</param>
+		<param name="atlassian-data-center-compatible">true</param>
+	</plugin-info>
 
-    <xhtml-macro name="marked"
-                 key="marked"
-                 class="com.borisdiakur.marked.MarkedMacro"
-                 icon="/download/resources/${project.groupId}.${project.artifactId}/images/pluginLogo.png"
-                 documentation-url="https://github.com/borisdiakur/marked">
-        <category name="formatting"/>
+	<xhtml-macro name="marked" key="marked"
+		class="com.borisdiakur.marked.MarkedMacro"
+		icon="/download/resources/${project.groupId}.${project.artifactId}/images/pluginLogo.png"
+		documentation-url="https://github.com/borisdiakur/marked">
+		<category name="formatting" />
 
-        <device-type>mobile</device-type>
+		<device-type>mobile</device-type>
 
-        <description>${project.description}</description>
+		<description>${project.description}</description>
 
-        <parameters>
-            <parameter name="URL" type="string" default ="">
-                <option key="showNameInPlaceholder" value="false" />
-                <option key="showValueInPlaceholder" value="true" />
-            </parameter>
-        </parameters>
-    </xhtml-macro>
+		<parameters>
+			<parameter name="ConnectorType" type="enum">
+				<value name="BitbucketUrlApiReferenceMarkdown" />
+				<value name="PlainTextMarkdown" />
+			</parameter>
+			<parameter name="URL" type="string" default="">
+				<option key="showNameInPlaceholder" value="false" />
+				<option key="showValueInPlaceholder" value="true" />
+			</parameter>			
+			<parameter name="HttpBasicUser" type="string">
+				<option key="showNameInPlaceholder" value="false" />
+				<option key="showValueInPlaceholder" value="true" />
+			</parameter>
+			<parameter name="HttpBasicPassword" type="string">
+				<option key="showNameInPlaceholder" value="false" />
+				<option key="showValueInPlaceholder" value="false" />
+			</parameter>
+		</parameters>
+	</xhtml-macro>
 
-    <resource type="download" name="images/" key="images" location="images/"/>
+	<resource type="download" name="images/" key="images"
+		location="images/" />
 </atlassian-plugin>
