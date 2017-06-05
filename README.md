@@ -27,11 +27,11 @@ or from [GitHub](https://github.com/borisdiakur/marked).
 ## Usage
 
 1. Select _marked_ in the _Select macro_ dialog.
-2. Select a connector type between Bitbucket Url Api Reference Markdown (Json Object) or any remote HTTP(S) plain text markdown.   
+2. Select a connector type between Bitbucket URL API Reference Markdown (Json Object) or any remote HTTP(S) plain text markdown.   
 3. Insert the URL of resource in the input field labeled with _URL_.
 4. If your resource requires HTTP Basic authentication, provide the user and password or leave them blank.
-3. Preview the rendered result by clicking on _Preview_.
-4. Insert the rendered content by clicking on _Insert_. You can now preview and save the document.
+5. Preview the rendered result by clicking on _Preview_.
+6. Insert the rendered content by clicking on _Insert_. You can now preview and save the document.
 
 ## FAQ
 
@@ -61,7 +61,7 @@ This is a bitbucket rest API URL: http[s]://[bicket-servser]:[port]/rest/api/1.0
 
 You will have to provide HTTP Basic Authentication as well. 
 
-_marked_ supports basic authentication  through the URL user info: http://user:password@rest-of-the-url or through the fields provided in the macro configuration. The second one is the recommended approach to avoid show the clear password in the Confluence Space when an error arises.  
+_marked_ supports basic authentication through the URL user info: http://user:password@rest-of-the-url (backward compatibility) or through the fields provided in the macro configuration. The second one is the recommended approach to avoid show the clear password in the Confluence Space when an error arises.  
 
 
 ### 2. I get a PKIX path building failed error. What's that? 
