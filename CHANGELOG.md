@@ -1,3 +1,7 @@
+## 1.1.3
+
+Support for Bitbucket on authenticated resources.
+
 ## 1.1.2
 
 Support release for Confluence 6.1.1

@@ -27,16 +27,17 @@ or from [GitHub](https://github.com/borisdiakur/marked).
 ## Usage
 
 1. Select _marked_ in the _Select macro_ dialog.
-2. Insert the URL of your raw markdown resource in the input field labeled with _URL_.
-3. Preview the rendered result by clicking on _Preview_.
-4. Insert the rendered content by clicking on _Insert_. You can now preview and save the document.
+2. Select a connector type between Bitbucket URL API Reference Markdown (Json Object) or any remote HTTP(S) plain text markdown.   
+3. Insert the URL of resource in the input field labeled with _URL_.
+4. If your resource requires HTTP Basic authentication, provide the user and password or leave them blank.
+5. Preview the rendered result by clicking on _Preview_.
+6. Insert the rendered content by clicking on _Insert_. You can now preview and save the document.
 
 ## FAQ
 
 ### 1. Can _marked_ access resources which reside in a private repository?
 
-When working with repositories which require authentication you'll might need to use the associated API
-in order to access those files.
+When working with repositories which requires authentication you'll might need to use the associated API in order to access those files.
 For example you'll __not__ be able to access a file on a private [__GitLab__](https://about.gitlab.com/) instance
 using the following URL:
 
@@ -53,10 +54,15 @@ In order to get the correct URL you would do the following:
 2. Get a list of files for a given project id: `https://gitlab.yourdomain.com/api/v3/projects/your-project-id/repository/tree?private_token=your-private-token`
 3. Get the raw file content for a given file id: `https://gitlab.yourdomain.com/api/v3/projects/your-project-id/repository/raw_blobs/your-file-id?private_token=your-private-token`
 
-__Note__: When working with another repository management system such as [Bitbucket](https://bitbucket.org/) or whatnot
-you will have to comply with the API given.
 
-_marked_ also supports basic auth.
+If you are using Bitbucket Respository [Bitbucket](https://bitbucket.org/) you can not access a resource in plain text through the REST API. The rest API provides the resource as a Json Object. In this situation you have to choose BitbucketUrlApiReferenceMarkdown as connector type which automatically will parse the Json Object to plain text.
+
+This is a bitbucket rest API URL: http[s]://[bicket-servser]:[port]/rest/api/1.0/users/[user]/repos/[repo]/browse/[path-to-markdown]
+
+You will have to provide HTTP Basic Authentication as well. 
+
+_marked_ supports basic authentication through the URL user info: http://user:password@rest-of-the-url (backward compatibility) or through the fields provided in the macro configuration. The second one is the recommended approach to avoid show the clear password in the Confluence Space when an error arises.  
+
 
 ### 2. I get a PKIX path building failed error. What's that? 
 
