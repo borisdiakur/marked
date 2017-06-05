@@ -1,5 +1,4 @@
-<atlassian-plugin key="${project.groupId}.${project.artifactId}"
-	name="${project.name}" plugins-version="2">
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
 	<plugin-info>
 		<description>${project.description}</description>
 		<version>${project.version}</version>
@@ -9,16 +8,10 @@
 		<param name="atlassian-data-center-compatible">true</param>
 	</plugin-info>
 
-	<xhtml-macro name="marked" key="marked"
-		class="com.borisdiakur.marked.MarkedMacro"
-		icon="/download/resources/${project.groupId}.${project.artifactId}/images/pluginLogo.png"
-		documentation-url="https://github.com/borisdiakur/marked">
+	<xhtml-macro name="marked" key="marked" class="com.borisdiakur.marked.MarkedMacro" icon="/download/resources/${project.groupId}.${project.artifactId}/images/pluginLogo.png" documentation-url="https://github.com/borisdiakur/marked">
 		<category name="formatting" />
-
 		<device-type>mobile</device-type>
-
 		<description>${project.description}</description>
-
 		<parameters>
 			<parameter name="ConnectorType" type="enum">
 				<value name="BitbucketUrlApiReferenceMarkdown" />
@@ -38,7 +31,5 @@
 			</parameter>
 		</parameters>
 	</xhtml-macro>
-
-	<resource type="download" name="images/" key="images"
-		location="images/" />
+	<resource type="download" name="images/" key="images" location="images/" />
 </atlassian-plugin>
