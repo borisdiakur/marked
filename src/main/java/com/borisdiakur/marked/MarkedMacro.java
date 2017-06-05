@@ -32,15 +32,14 @@ public class MarkedMacro extends BaseMacro implements Macro {
 			// try opening the URL
 			URLConnection urlConnection = url.openConnection();
 
-			// basic auth
+			// basic auth backward compatibility
 			if (url.getUserInfo() != null) {
-				String basicAuth = "Basic "
-						+ javax.xml.bind.DatatypeConverter.printBase64Binary(url.getUserInfo().getBytes());
+				String basicAuth = "Basic " + javax.xml.bind.DatatypeConverter.printBase64Binary(url.getUserInfo().getBytes());
 				urlConnection.setRequestProperty("Authorization", basicAuth);
 			}
+			// basic auth
 			if (user != null && password != null) {
-				String basicAuth = "Basic "
-						+ javax.xml.bind.DatatypeConverter.printBase64Binary((user + ":" + password).getBytes());
+				String basicAuth = "Basic " + javax.xml.bind.DatatypeConverter.printBase64Binary((user + ":" + password).getBytes());
 				urlConnection.setRequestProperty("Authorization", basicAuth);
 			}
 			InputStream urlStream = urlConnection.getInputStream();
@@ -75,8 +74,7 @@ public class MarkedMacro extends BaseMacro implements Macro {
 	}
 
 	@Override
-	public String execute(Map<String, String> parameters, String bodyContent, ConversionContext conversionContext)
-			throws MacroExecutionException {
+	public String execute(Map<String, String> parameters, String bodyContent, ConversionContext conversionContext) throws MacroExecutionException {
 		URL urlObject = null;
 		String url = parameters.get("URL");
 		String markdown = null;
@@ -118,8 +116,7 @@ public class MarkedMacro extends BaseMacro implements Macro {
 
 	String convertToHtml(String markdown) {
 		MutableDataSet options = new MutableDataSet();
-		options.set(Parser.EXTENSIONS, Arrays.asList(TablesExtension.create(), StrikethroughExtension.create(),
-				ConfluenceCodeBlockExtension.create()));
+		options.set(Parser.EXTENSIONS, Arrays.asList(TablesExtension.create(), StrikethroughExtension.create(), ConfluenceCodeBlockExtension.create()));
 		Parser parser = Parser.builder(options).build();
 		HtmlRenderer renderer = HtmlRenderer.builder(options).build();
 		return renderer.render(parser.parse(markdown));

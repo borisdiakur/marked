@@ -27,7 +27,7 @@
 			<parameter name="URL" type="string" default="">
 				<option key="showNameInPlaceholder" value="false" />
 				<option key="showValueInPlaceholder" value="true" />
-			</parameter>			
+			</parameter>
 			<parameter name="HttpBasicUser" type="string">
 				<option key="showNameInPlaceholder" value="false" />
 				<option key="showValueInPlaceholder" value="true" />
