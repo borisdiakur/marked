@@ -1,3 +1,11 @@
+## 1.1.4
+
+Support release for Confluence 6.3.1
+
+## 1.1.3
+
+Add support for confluence code block syntax highlighting.
+
 ## 1.1.2
 
 Support release for Confluence 6.1.1
