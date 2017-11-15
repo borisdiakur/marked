@@ -32,8 +32,7 @@ public class MarkedMacro extends BaseMacro implements Macro {
 
             // basic auth
             if (url.getUserInfo() != null) {
-                String basicAuth = "Basic "
-                        + javax.xml.bind.DatatypeConverter.printBase64Binary(url.getUserInfo().getBytes());
+                String basicAuth = "Basic " + javax.xml.bind.DatatypeConverter.printBase64Binary(url.getUserInfo().getBytes());
                 urlConnection.setRequestProperty("Authorization", basicAuth);
             }
 
@@ -69,8 +68,7 @@ public class MarkedMacro extends BaseMacro implements Macro {
     }
 
     @Override
-    public String execute(Map<String, String> parameters, String bodyContent, ConversionContext conversionContext)
-            throws MacroExecutionException {
+    public String execute(Map<String, String> parameters, String bodyContent, ConversionContext conversionContext) throws MacroExecutionException {
         URL url;
         if (parameters.get("URL") == null) {
             return "";
