@@ -1,5 +1,13 @@
 package com.borisdiakur.marked;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Arrays;
+import java.util.Map;
+
 import com.atlassian.confluence.content.render.xhtml.ConversionContext;
 import com.atlassian.confluence.content.render.xhtml.DefaultConversionContext;
 import com.atlassian.confluence.macro.Macro;
@@ -11,16 +19,9 @@ import com.atlassian.renderer.v2.macro.MacroException;
 import com.vladsch.flexmark.ext.gfm.strikethrough.StrikethroughExtension;
 import com.vladsch.flexmark.ext.tables.TablesExtension;
 import com.vladsch.flexmark.html.HtmlRenderer;
+import com.vladsch.flexmark.html.HtmlRenderer.Builder;
 import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.util.options.MutableDataSet;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.Arrays;
-import java.util.Map;
 
 public class MarkedMacro extends BaseMacro implements Macro {
 
@@ -79,17 +80,25 @@ public class MarkedMacro extends BaseMacro implements Macro {
         }
 
         String markdown = fetchPage(url);
-        return convertToHtml(markdown);
+        return convertToHtml(markdown, url);
     }
 
     String convertToHtml(String markdown) {
-        MutableDataSet options = new MutableDataSet();
-        options.set(Parser.EXTENSIONS, Arrays.asList(TablesExtension.create(), StrikethroughExtension.create(), ConfluenceCodeBlockExtension.create()));
-        Parser parser = Parser.builder(options).build();
-        HtmlRenderer renderer = HtmlRenderer.builder(options).build();
-        return renderer.render(parser.parse(markdown));
+        return convertToHtml(markdown, null);
     }
 
+    String convertToHtml(String markdown, URL currentURL) {
+        MutableDataSet options = new MutableDataSet();
+        options.set(Parser.EXTENSIONS, Arrays.asList(TablesExtension.create(), StrikethroughExtension.create(),
+                ConfluenceCodeBlockExtension.create()));
+        Parser parser = Parser.builder(options).build();
+        Builder builder = HtmlRenderer.builder(options);
+        if (currentURL != null) {
+            builder.linkResolverFactory(new RelativeResolverFactory(currentURL));
+        }
+        HtmlRenderer renderer = builder.build();
+        return renderer.render(parser.parse(markdown));
+    }
 
     @Override
     public boolean hasBody() {

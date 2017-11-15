@@ -1,11 +1,17 @@
 package com.borisdiakur.marked;
 
-import org.junit.Before;
-import org.junit.Test;
-
 import static com.borisdiakur.marked.ConfluenceCodeBlockExtension.ConfluenceCodeBlockNodeRenderer.CONFLUENCE_CODE_BLOCK_HTML_CLOSE;
 import static com.borisdiakur.marked.ConfluenceCodeBlockExtension.ConfluenceCodeBlockNodeRenderer.CONFLUENCE_CODE_BLOCK_HTML_OPEN_TEMPLATE;
 import static org.junit.Assert.assertEquals;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.junit.Before;
+import org.junit.Test;
 
 public class MarkedMacroTest {
 
@@ -143,6 +149,69 @@ public class MarkedMacroTest {
 
 
         assertEquals(expectedHtml, html);
+    }
+    
+    @Test
+    public void convertsRelativeURL() {
+        URL baseURL;
+        try {
+            baseURL = new URL("http://localhost/test/test2/index.md");
+
+            // test a set of cases
+
+            Map<String, String> tests = new HashMap<String, String>();
+            tests.put("[A hyperlink](./hyperlink.md)",
+                    "<p><a href=\"http://localhost/test/test2/hyperlink.md\">A hyperlink</a></p>\n");
+            tests.put("[A hyperlink](./hyperlink.md?param=test)",
+                    "<p><a href=\"http://localhost/test/test2/hyperlink.md?param=test\">A hyperlink</a></p>\n");
+            tests.put("[A hyperlink](../hyperlink.md)",
+                    "<p><a href=\"http://localhost/test/hyperlink.md\">A hyperlink</a></p>\n");
+            tests.put("[A hyperlink](../../hyperlink.md)",
+                    "<p><a href=\"http://localhost/hyperlink.md\">A hyperlink</a></p>\n");
+            tests.put("[A hyperlink](./../hyperlink.md)",
+                    "<p><a href=\"http://localhost/test/hyperlink.md\">A hyperlink</a></p>\n");
+            tests.put("[A hyperlink](test/hyperlink.md)",
+                    "<p><a href=\"http://localhost/test/test2/test/hyperlink.md\">A hyperlink</a></p>\n");
+            tests.put("[A hyperlink](/root/hyperlink.md)",
+                    "<p><a href=\"http://localhost/root/hyperlink.md\">A hyperlink</a></p>\n");
+            tests.put("[A hyperlink](http://www.myHyperlink.com)",
+                    "<p><a href=\"http://www.myHyperlink.com\">A hyperlink</a></p>\n");
+            tests.put("![Logo](./images/logo.png)",
+                    "<p><img src=\"http://localhost/test/test2/images/logo.png\" alt=\"Logo\" /></p>\n");
+            tests.put("![Logo](../images/logo.png)",
+                    "<p><img src=\"http://localhost/test/images/logo.png\" alt=\"Logo\" /></p>\n");
+            tests.put("![Logo](../../images/logo.png)",
+                    "<p><img src=\"http://localhost/images/logo.png\" alt=\"Logo\" /></p>\n");
+            tests.put("![Logo](./../images/logo.png)",
+                    "<p><img src=\"http://localhost/test/images/logo.png\" alt=\"Logo\" /></p>\n");
+            tests.put("![Logo](/root/images/logo.png)",
+                    "<p><img src=\"http://localhost/root/images/logo.png\" alt=\"Logo\" /></p>\n");
+            tests.put("![Logo](http://www.myHyperlink.com/images.jpg)",
+                    "<p><img src=\"http://www.myHyperlink.com/images.jpg\" alt=\"Logo\" /></p>\n");
+
+            for (Entry<String, String> entry : tests.entrySet()) {
+                String markdown = entry.getKey();
+                String expectedHtml = entry.getValue();
+                // when converting markdown to html
+                String h = markedMacro.convertToHtml(markdown, baseURL);
+                // then relative hyperlink url is transformed to correct url
+                String errorMessage = String.format("ERROR, expected %s from \n\t%s\n\tresult is : %s", expectedHtml,
+                        markdown, h);
+                assertEquals(errorMessage, expectedHtml, h);
+            }
+
+            // test no regression is null
+            String hNoRegression = markedMacro.convertToHtml("[A hyperlink](./hyperlink.md)");
+            assertEquals("<p><a href=\"./hyperlink.md\">A hyperlink</a></p>\n", hNoRegression);
+
+            // test if url is null
+            String h = markedMacro.convertToHtml("[A hyperlink](./hyperlink.md)", null);
+            assertEquals("<p><a href=\"./hyperlink.md\">A hyperlink</a></p>\n", h);
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
