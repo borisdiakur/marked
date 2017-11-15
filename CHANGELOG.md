@@ -1,3 +1,7 @@
+## 1.2.0
+
+Added support for relative URIs (#7). Thanks to @TristanFAURE
+
 ## 1.1.6
 
 Support release for Confluence 6.5.0
@@ -12,7 +16,7 @@ Support release for Confluence 6.3.1
 
 ## 1.1.3
 
-Add support for confluence code block syntax highlighting.
+Add support for confluence code block syntax highlighting (#8). Thanks to @kiview
 
 ## 1.1.2
 
@@ -25,7 +29,7 @@ Support release for Confluence 6.0.1
 
 ## 1.1.0
 
-Added support for basic auth
+Added support for basic auth (#3)
 
 ## 1.0.3
 
