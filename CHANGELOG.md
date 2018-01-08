@@ -1,3 +1,7 @@
+## 1.2.1
+
+Support release for Confluence 6.6.0
+
 ## 1.2.0
 
 Added support for relative URIs (#7). Thanks to @TristanFAURE
