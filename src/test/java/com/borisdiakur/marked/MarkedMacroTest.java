@@ -1,8 +1,7 @@
 package com.borisdiakur.marked;
 
-import static com.borisdiakur.marked.ConfluenceCodeBlockExtension.ConfluenceCodeBlockNodeRenderer.CONFLUENCE_CODE_BLOCK_HTML_CLOSE;
-import static com.borisdiakur.marked.ConfluenceCodeBlockExtension.ConfluenceCodeBlockNodeRenderer.CONFLUENCE_CODE_BLOCK_HTML_OPEN_TEMPLATE;
-import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -10,8 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.junit.Before;
-import org.junit.Test;
+import static com.borisdiakur.marked.ConfluenceCodeBlockExtension.ConfluenceCodeBlockNodeRenderer.CONFLUENCE_CODE_BLOCK_HTML_CLOSE;
+import static com.borisdiakur.marked.ConfluenceCodeBlockExtension.ConfluenceCodeBlockNodeRenderer.CONFLUENCE_CODE_BLOCK_HTML_OPEN_TEMPLATE;
+import static org.junit.Assert.assertEquals;
 
 public class MarkedMacroTest {
 
@@ -147,6 +147,24 @@ public class MarkedMacroTest {
                 "}\n" +
                 "</pre></div></div>\n";
 
+
+        assertEquals(expectedHtml, html);
+    }
+
+    @Test
+    public void usesConfluenceDefaultBrushForUnsupportedLanguage() {
+        // given a markdown containing code fence
+        String markdown = "```yolo\n" +
+                "System.out.println(\"foobar\")\n" +
+                "int x = 5\n" +
+                "```";
+
+        // when converting markdown to html
+        String html = markedMacro.convertToHtml(markdown);
+
+        // then code tag is wrapped in confluence blocks
+        String expectedHtml = String.format(CONFLUENCE_CODE_BLOCK_HTML_OPEN_TEMPLATE, "java") + "System.out.println(\"foobar\")\n" +
+                "int x = 5\n" + CONFLUENCE_CODE_BLOCK_HTML_CLOSE + "\n";
 
         assertEquals(expectedHtml, html);
     }

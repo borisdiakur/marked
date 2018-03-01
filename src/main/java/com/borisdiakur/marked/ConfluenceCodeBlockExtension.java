@@ -14,6 +14,7 @@ import com.vladsch.flexmark.util.options.DataHolder;
 import com.vladsch.flexmark.util.options.MutableDataHolder;
 import com.vladsch.flexmark.util.sequence.BasedSequence;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -77,7 +78,35 @@ public class ConfluenceCodeBlockExtension implements HtmlRenderer.HtmlRendererEx
 
         private void renderFencedCodeBlock(FencedCodeBlock fencedCodeBlock, NodeRendererContext context, HtmlWriter htmlWriter) {
             String language = fencedCodeBlock.getInfo().toString();
-            if (language.isEmpty()) {
+            String[] supportedLanguages = new String[] {
+                "actionsscript3",
+                "applescript",
+                "bash",
+                "c#",
+                "cpp",
+                "css",
+                "coldfusion",
+                "delphi",
+                "diff",
+                "erl",
+                "groovy",
+                "xml",
+                "java",
+                "jfx",
+                "js",
+                "php",
+                "perl",
+                "text",
+                "powershell",
+                "py",
+                "ruby",
+                "sql",
+                "sass",
+                "scala",
+                "vb"
+            };
+
+            if (language.isEmpty() || !Arrays.asList(supportedLanguages).contains(language)) {
                 // confluence defaults to java
                 language = "java";
             }
