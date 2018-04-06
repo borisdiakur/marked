@@ -1,3 +1,7 @@
+## 1.2.4
+
+Support release for Confluence 6.8.0
+
 ## 1.2.3
 
 Using fallback for unsupported languages in code block (fixes error “SyntaxHighlighter Can't find brush”)
