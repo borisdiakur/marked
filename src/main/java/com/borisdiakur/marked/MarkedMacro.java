@@ -1,13 +1,5 @@
 package com.borisdiakur.marked;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.Arrays;
-import java.util.Map;
-
 import com.atlassian.confluence.content.render.xhtml.ConversionContext;
 import com.atlassian.confluence.content.render.xhtml.DefaultConversionContext;
 import com.atlassian.confluence.macro.Macro;
@@ -23,10 +15,19 @@ import com.vladsch.flexmark.html.HtmlRenderer.Builder;
 import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.util.options.MutableDataSet;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.*;
+import java.util.Arrays;
+import java.util.Map;
+
 public class MarkedMacro extends BaseMacro implements Macro {
 
     private String fetchPage(URL url) {
         try {
+            // First set the default cookie manager.
+            CookieHandler.setDefault(new CookieManager(null, CookiePolicy.ACCEPT_ALL));
+
             // try opening the URL
             URLConnection urlConnection = url.openConnection();
 
@@ -93,6 +94,7 @@ public class MarkedMacro extends BaseMacro implements Macro {
                 ConfluenceCodeBlockExtension.create()));
         Parser parser = Parser.builder(options).build();
         Builder builder = HtmlRenderer.builder(options);
+        // builder.percentEncodeUrls(true);
         if (currentURL != null) {
             builder.linkResolverFactory(new RelativeResolverFactory(currentURL));
         }

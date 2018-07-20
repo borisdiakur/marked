@@ -56,6 +56,20 @@ public class MarkedMacroTest {
         assertEquals(expectedHtml, html);
     }
 
+//    @Test
+//    public void encodesUrls() {
+//        // given a markdown containing code fence
+//        String markdown = "[[Qux] Baz](http://example.com/[yolo]foobar.pdf)";
+//
+//        // when converting markdown to html
+//        String html = markedMacro.convertToHtml(markdown);
+//
+//        // then code tag is wrapped in confluence blocks
+//        String expectedHtml = "<p><a href=\"http://example.com/%5Byolo%5Dfoobar.pdf\">[Qux] Baz</a></p>\n";
+//
+//        assertEquals(expectedHtml, html);
+//    }
+
     @Test
     public void convertsFencedCodeBlockToConfluenceCodeBlockWhenNoLanguageIsSpecified() {
         // given a markdown containing code fence

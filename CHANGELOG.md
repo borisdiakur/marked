@@ -1,3 +1,7 @@
+## 1.2.6
+
+Support release for Confluence 6.10.0
+
 ## 1.2.5
 
 Support release for Confluence 6.9.0
