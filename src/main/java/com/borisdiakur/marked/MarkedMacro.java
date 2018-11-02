@@ -31,10 +31,17 @@ public class MarkedMacro extends BaseMacro implements Macro {
             // try opening the URL
             URLConnection urlConnection = url.openConnection();
 
-            // basic auth
+            // basic/bearer auth
             if (url.getUserInfo() != null) {
-                String basicAuth = "Basic " + javax.xml.bind.DatatypeConverter.printBase64Binary(url.getUserInfo().getBytes());
-                urlConnection.setRequestProperty("Authorization", basicAuth);
+                String userInfo = url.getUserInfo();
+                String auth;
+                if (userInfo.startsWith("x-token-auth:")) {
+                    auth = "Bearer " + userInfo.substring(userInfo.indexOf(':') + 1);
+                }
+                else {
+                    auth = "Basic " + javax.xml.bind.DatatypeConverter.printBase64Binary(userInfo.getBytes());
+                }
+                urlConnection.setRequestProperty("Authorization", auth);
             }
 
             InputStream urlStream = urlConnection.getInputStream();
