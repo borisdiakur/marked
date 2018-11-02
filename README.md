@@ -35,7 +35,7 @@ or from [GitHub](https://github.com/borisdiakur/marked).
 
 ### 1. Can _marked_ access resources which reside in a private repository?
 
-When working with repositories which require authentication you'll might need to use the associated API
+When working with repositories which require authentication you'll need to use the associated API
 in order to access those files.
 For example you'll __not__ be able to access a file on a private [__GitLab__](https://about.gitlab.com/) instance
 using the following URL:
@@ -53,10 +53,15 @@ In order to get the correct URL you would do the following:
 2. Get a list of files for a given project id: `https://gitlab.yourdomain.com/api/v3/projects/your-project-id/repository/tree?private_token=your-private-token`
 3. Get the raw file content for a given file id: `https://gitlab.yourdomain.com/api/v3/projects/your-project-id/repository/raw_blobs/your-file-id?private_token=your-private-token`
 
-__Note__: When working with another repository management system such as [Bitbucket](https://bitbucket.org/) or whatnot
+For private [Bitbucket](https://bitbucket.org/) repositories, token authentication is supported:
+
+1. For the user authorized to access the repository, add a Personal Access Token in the account settings
+2. Place the token in the URL: `https://x-token-auth:TOKEN@bitbucket.example.com:PORT/rest/api/1.0/projects/PROJECT/repos/REPO/raw/README.md`
+
+__Note__: When working with another repository management system
 you will have to comply with the API given.
 
-_marked_ also supports basic auth.
+_marked_ also supports basic auth (`http[s]://user:password@...`) and bearer (token) auth (`http[s]://x-token-auth:token@...`).
 
 ### 2. I get a PKIX path building failed error. What's that? 
 
