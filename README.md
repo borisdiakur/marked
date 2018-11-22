@@ -6,7 +6,7 @@
 
 ## Installation
 
-### Via [Attlasian Marketplace](https://marketplace.atlassian.com/plugins/com.borisdiakur.marked)
+### Via [Atlassian Marketplace](https://marketplace.atlassian.com/plugins/com.borisdiakur.marked)
 
 1. Log into your Confluence instance as an admin.
 2. Click the admin dropdown and choose __Add-ons__. The _Manage add-ons_ screen loads.
@@ -17,7 +17,7 @@
 
 ### Manually
 
-1. Download the _marked_ jar file either from the [Attlasian Marketplace](https://marketplace.atlassian.com/plugins/com.borisdiakur.marked)
+1. Download the _marked_ jar file either from the [Atlassian Marketplace](https://marketplace.atlassian.com/plugins/com.borisdiakur.marked)
 or from [GitHub](https://github.com/borisdiakur/marked). 
 2. Log into your Confluence instance as an admin.
 3. Click the admin dropdown and choose __Add-ons__. The _Manage add-ons_ screen loads.
