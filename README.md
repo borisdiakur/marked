@@ -22,7 +22,7 @@ or from [GitHub](https://github.com/borisdiakur/marked).
 2. Log into your Confluence instance as an admin.
 3. Click the admin dropdown and choose __Add-ons__. The _Manage add-ons_ screen loads.
 4. Click __Upload add-on__ at the top right of the page. The _Upload add-on_ dialog loads.
-5. Choose the file from you file system or enter the URL to the location of the raw jar file and click __upload__. And that's it!
+5. Choose the file from your file system or enter the URL to the location of the raw jar file and click __upload__. And that's it!
 
 ## Usage
 
