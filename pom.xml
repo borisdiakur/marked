@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.borisdiakur</groupId>
     <artifactId>marked</artifactId>
-    <version>1.2.8</version>
+    <version>1.2.9</version>
     <organization>
         <name>Boris Diakur</name>
         <url>http://borisdiakur.com/</url>
@@ -60,7 +60,7 @@
         <plugins>
             <plugin>
                 <groupId>com.atlassian.maven.plugins</groupId>
-                <artifactId>maven-confluence-plugin</artifactId>
+                <artifactId>confluence-maven-plugin</artifactId>
                 <version>${amps.version}</version>
                 <extensions>true</extensions>
                 <configuration>
@@ -78,9 +78,9 @@
         </plugins>
     </build>
     <properties>
-        <confluence.version>6.13.0</confluence.version>
-        <confluence.data.version>6.13.0</confluence.data.version>
-        <amps.version>6.3.21</amps.version>
+        <confluence.version>6.15.1</confluence.version>
+        <confluence.data.version>6.15.1</confluence.data.version>
+        <amps.version>8.0.0</amps.version>
         <plugin.testrunner.version>1.2.3</plugin.testrunner.version>
     </properties>
     <scm>
