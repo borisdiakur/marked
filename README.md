@@ -81,6 +81,10 @@ Yes.
 If you have any trouble with _marked_ help yourself by [__filing an issue__](https://github.com/borisdiakur/marked/issues)
 or even better support back with a [__pull request__](https://github.com/borisdiakur/marked/pulls).
 
+## Privacy Notice
+
+_marked_ does not collect any data.
+
 ## Credits
 
 _marked_ uses the Markdown processing library [__flexmark-java__](https://github.com/vsch/flexmark-java) under the hood.
