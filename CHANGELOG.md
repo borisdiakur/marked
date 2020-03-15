@@ -1,3 +1,7 @@
+## 1.2.13
+
+Support release for Confluence 7.3.3
+
 ## 1.2.12
 
 Support release for Confluence 7.2.1
