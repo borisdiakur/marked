@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.borisdiakur</groupId>
     <artifactId>marked</artifactId>
-    <version>1.2.13</version>
+    <version>1.2.14</version>
     <organization>
         <name>Boris Diakur</name>
         <url>http://borisdiakur.com/</url>
@@ -78,8 +78,8 @@
         </plugins>
     </build>
     <properties>
-        <confluence.version>7.3.3</confluence.version>
-        <confluence.data.version>7.3.3</confluence.data.version>
+        <confluence.version>7.4.0</confluence.version>
+        <confluence.data.version>7.4.0</confluence.data.version>
         <amps.version>8.0.1</amps.version>
         <plugin.testrunner.version>1.2.3</plugin.testrunner.version>
     </properties>
