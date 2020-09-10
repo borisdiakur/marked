@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.borisdiakur</groupId>
     <artifactId>marked</artifactId>
-    <version>1.2.15</version>
+    <version>1.2.16</version>
     <organization>
         <name>Boris Diakur</name>
         <url>http://borisdiakur.com/</url>
@@ -78,6 +78,7 @@
         </plugins>
     </build>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <confluence.version>7.6.1</confluence.version>
         <confluence.data.version>7.6.1</confluence.data.version>
         <amps.version>8.0.1</amps.version>
