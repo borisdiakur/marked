@@ -15,9 +15,12 @@ import com.vladsch.flexmark.html.HtmlRenderer.Builder;
 import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.util.options.MutableDataSet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -38,13 +41,16 @@ public class MarkedMacro extends BaseMacro implements Macro {
             }
 
             InputStream urlStream = urlConnection.getInputStream();
-            byte buffer[] = new byte[1000];
-            int numRead = urlStream.read(buffer);
+            InputStreamReader inputStreamReader = new InputStreamReader(urlStream, StandardCharsets.UTF_8);
+            BufferedReader bufReader = new BufferedReader(inputStreamReader);
+
+            char buffer[] = new char[1000];
+            int numRead = bufReader.read(buffer);
             String content = new String(buffer, 0, numRead);
 
             int MAX_PAGE_SIZE = Integer.MAX_VALUE;
             while ((numRead != -1) && (content.length() < MAX_PAGE_SIZE)) {
-                numRead = urlStream.read(buffer);
+                numRead = bufReader.read(buffer);
                 if (numRead != -1) {
                     String newContent = new String(buffer, 0, numRead);
                     content += newContent;
