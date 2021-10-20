@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.borisdiakur</groupId>
     <artifactId>marked</artifactId>
-    <version>1.2.17</version>
+    <version>1.2.18</version>
     <organization>
         <name>Boris Diakur</name>
         <url>http://borisdiakur.com/</url>
@@ -80,8 +80,8 @@
     </build>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <confluence.version>7.10.2</confluence.version>
-        <confluence.data.version>7.10.2</confluence.data.version>
+        <confluence.version>7.14.0</confluence.version>
+        <confluence.data.version>7.14.0</confluence.data.version>
         <amps.version>8.0.1</amps.version>
         <plugin.testrunner.version>1.2.3</plugin.testrunner.version>
     </properties>

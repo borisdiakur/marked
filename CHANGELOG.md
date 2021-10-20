@@ -1,3 +1,7 @@
+## 1.2.18
+
+Support release for Confluence 7.14.0
+
 ## 1.2.17
 
 Fix: Unicode-Support for Marked-Macro (#4). Thanks to @Juiceful
