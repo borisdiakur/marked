@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.borisdiakur</groupId>
     <artifactId>marked</artifactId>
-    <version>1.2.18</version>
+    <version>1.2.19</version>
     <organization>
         <name>Boris Diakur</name>
         <url>http://borisdiakur.com/</url>
@@ -16,7 +16,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.1</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -28,7 +28,7 @@
         <dependency>
             <groupId>com.atlassian.renderer</groupId>
             <artifactId>atlassian-renderer</artifactId>
-            <version>8.0.5</version>
+            <version>9.0.2</version>
         </dependency>
         <!-- WIRED TEST RUNNER DEPENDENCIES -->
         <dependency>
@@ -80,9 +80,9 @@
     </build>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <confluence.version>7.14.0</confluence.version>
-        <confluence.data.version>7.14.0</confluence.data.version>
-        <amps.version>8.0.1</amps.version>
+        <confluence.version>7.20.3</confluence.version>
+        <confluence.data.version>7.20.3</confluence.data.version>
+        <amps.version>8.0.2</amps.version>
         <plugin.testrunner.version>1.2.3</plugin.testrunner.version>
     </properties>
     <scm>
