@@ -1,3 +1,7 @@
+## 1.3.0
+
+Support for OAuth2-style bearer (token) authentication
+
 ## 1.2.19
 
 Support release for Confluence 7.20.3
