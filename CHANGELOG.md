@@ -1,3 +1,7 @@
+## 1.3.1
+
+Support release for Confluence 8.6.1
+
 ## 1.3.0
 
 Support for OAuth2-style bearer (token) authentication
