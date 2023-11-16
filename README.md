@@ -86,6 +86,11 @@ Yes.
 If you have any trouble with _marked_ help yourself by [__filing an issue__](https://github.com/borisdiakur/marked/issues)
 or even better support back with a [__pull request__](https://github.com/borisdiakur/marked/pulls).
 
+## Contributing
+
+The default [Apache Maven](https://maven.apache.org/) instance boundled with the Atlassian SDK is outdated. If you want to build the plugin yourself, you will need to [change it](https://developer.atlassian.com/server/framework/atlassian-sdk/changing-the-default-maven-version/). The latest version of _marked_ is built with Apache Maven 3.9.5.
+Background: Confluence 8.0 has added support for Java 17. To develop apps running against Java 17, you must be running with AMPS 8.3.3 or later. Apache Maven 3.6.3 is the minimum version required starting from AMPS 8.3.0.
+
 ## Privacy Notice
 
 _marked_ does not collect any data.
